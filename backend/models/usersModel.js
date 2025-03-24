@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema(
       trim: true,
       select: false,
     },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true, // Allows unique values but ignores null values
+    },
     verified: {
       type: Boolean,
       default: false,
@@ -33,6 +38,10 @@ const userSchema = new mongoose.Schema(
     forgotPasswordCode: {
       type: String,
       select: false,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false, // By default, users are not admins
     },
   },
   { timestamps: true }
